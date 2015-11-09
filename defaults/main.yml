@@ -6,7 +6,7 @@ install_openshift_method: copr
 
 # specify particular version that should be installed from copr
 # can be either VERSION or VERSION-RELEASE
-install_openshift_copr_version: 1.0.7
+install_openshift_copr_version: 1.0.8
 
 # variables for source build
 
