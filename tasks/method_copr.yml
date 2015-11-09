@@ -5,5 +5,5 @@
 - name: install openshift
   yum: name={{ item }} state={{ osbs_update_packages | ternary('latest', 'present') }}
   with_items:
-  - openshift-master-{{ install_openshift_copr_version }}
-  - openshift-node-{{ install_openshift_copr_version }}
+  - origin-master-{{ install_openshift_copr_version }}
+  - origin-node-{{ install_openshift_copr_version }}
