@@ -7,3 +7,11 @@
   with_items:
   - origin-master-{{ install_openshift_copr_version }}
   - origin-node-{{ install_openshift_copr_version }}
+  when: ansible_pkg_mgr == "yum"
+
+- name: install openshift
+  dnf: name={{ item }} state={{ osbs_update_packages | ternary('latest', 'present') }}
+  with_items:
+  - origin-master-{{ install_openshift_copr_version }}
+  - origin-node-{{ install_openshift_copr_version }}
+  when: ansible_pkg_mgr == "dnf"
