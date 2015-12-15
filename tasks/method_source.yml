@@ -1,18 +1,13 @@
 ---
 - name: install build packages
-  yum: name={{ item }} state=installed
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=installed"
   with_items:
   - rpm-build
-  - yum-utils
   - rpmdevtools
-  when: ansible_pkg_mgr == "yum"
 
 - name: install build packages
-  dnf: name={{ item }} state=installed
-  with_items:
-  - rpm-build
-  - rpmdevtools
-  when: ansible_pkg_mgr == "dnf"
+  yum: name=yum-utils state=installed
+  when: ansible_pkg_mgr == "yum"
 
 - name: delete rpmbuild directories
   file: path={{ install_openshift_source_rpmbuild_dir }}/{{ item }}/ state=absent
